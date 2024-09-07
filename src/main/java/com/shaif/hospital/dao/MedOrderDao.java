@@ -13,7 +13,7 @@ public interface MedOrderDao {
 
 	public boolean deleteMedOrderById(int mid);
 
-	public List<MedOrder> getMedOrdersByDoctorName(int eid);
+	public List<MedOrder> getMedOrdersByDoctorName(String name);
 
 	public List<MedOrder> getMedOrderByDate(String date);
 
