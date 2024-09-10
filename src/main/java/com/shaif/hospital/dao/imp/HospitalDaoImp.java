@@ -1,5 +1,7 @@
 package com.shaif.hospital.dao.imp;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
@@ -9,7 +11,7 @@ import com.shaif.hospital.dao.HospitalDao;
 import com.shaif.hospital.dto.Hospital;
 
 public class HospitalDaoImp implements HospitalDao{
-	EntityManagerFactory emf=Persistence.createEntityManagerFactory("pu");
+	EntityManagerFactory emf=Persistence.createEntityManagerFactory("shaif");
 	EntityManager em=emf.createEntityManager();
 	EntityTransaction tx=em.getTransaction();
 	
@@ -56,6 +58,15 @@ public class HospitalDaoImp implements HospitalDao{
 			return true;
 		}
 		return false;
+	}
+
+	@Override
+	public List<Hospital> getAllHospitals() {
+		List<Hospital> hospitals=em.createQuery("from Hospital").getResultList();
+		if (hospitals != null) {
+			return hospitals;
+		}
+		return null;
 	}
 	
 }

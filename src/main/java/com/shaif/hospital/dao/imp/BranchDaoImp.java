@@ -69,7 +69,12 @@ public class BranchDaoImp implements BranchDao{
 
 	@Override
 	public List<Branch> getAllBranches() {
-		// TODO Auto-generated method stub
+		List<Branch> branches=em.createQuery("from Branch",Branch.class).getResultList();
+		if(branches!=null) {
+            tx.begin();
+            tx.commit();
+            return branches;
+		}
 		return null;
 	}
 
